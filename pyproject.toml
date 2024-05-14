@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "confcls"
+version = "0.0.1"
+description = "Class instance configurator"
+authors = [
+    "Václav Krpec <vencik@razdva.cz>",
+]
+packages = [
+    { include = "confcls" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+smart-open = {version = "^7.0.4", optional = true}
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.2.0"
+pylint = "^3.2.0"
+mypy = "^1.10.0"
+
+[tool.poetry.extras]
+all = ["smart-open"]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

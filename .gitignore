@@ -1,0 +1,17 @@
+# python
+*.pyc
+__pycache__/
+*.egg-info
+dist/
+
+# tests
+tests/coverage.xml
+tests/results.xml
+tests/mypy.xml
+.coverage*
+
+# mypy
+.mypy_cache
+
+# environment
+.venv/
