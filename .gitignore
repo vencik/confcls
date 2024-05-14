@@ -15,3 +15,6 @@ tests/mypy.xml
 
 # environment
 .venv/
+
+# generated
+README.md
