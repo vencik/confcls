@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "confcls"
-version = "0.1.4"
+version = "0.1.5"
 description = "Class instance configurator"
 authors = [
     "Václav Krpec <vencik@razdva.cz>",
@@ -9,7 +9,6 @@ packages = [
     { include = "confcls" },
 ]
 readme = "README.md"
-license = "BSD 3-clause license"
 keywords = ["config", "configuration"]
 classifiers = [
     "License :: OSI Approved :: BSD License",
