@@ -178,4 +178,4 @@ The package may be published using the `publish` target.
 
 ## Author
 
-Václav Krpec &lt;<vaclav.krpec@merck.com>&gt;
+Václav Krpec &lt;<vencik@razdva.cz>&gt;
