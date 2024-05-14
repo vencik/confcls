@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "confcls"
-version = "0.0.1"
+version = "0.1.0"
 description = "Class instance configurator"
 authors = [
     "Václav Krpec <vencik@razdva.cz>",
@@ -8,6 +8,18 @@ authors = [
 packages = [
     { include = "confcls" },
 ]
+readme = "README.md"
+license = "LICENSE"
+keywords = ["config", "configuration"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.9",
+]
+
+[tool.poetry.urls]
+Homepage = "https://github.com/vencik/confcls"
+Repository = "https://github.com/vencik/confcls"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -17,6 +29,7 @@ smart-open = {version = "^7.0.4", optional = true}
 pytest = "^8.2.0"
 pylint = "^3.2.0"
 mypy = "^1.10.0"
+twine = "^5.0.0"
 
 [tool.poetry.extras]
 all = ["smart-open"]
