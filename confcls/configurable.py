@@ -12,7 +12,7 @@ from .object import Object
 
 class Configurable:
     """
-    Provides `from_file` class method for object instantiation from configuration file.
+    Provides `from_config` class method for object instantiation from configuration file.
 
     JSON objects containing special meta key `__type__` shall be treated as keyword
     parameters for constructor of the class specified in that key.
@@ -24,7 +24,7 @@ class Configurable:
     as the JSON object contains (accessible via the standard dot syntax).
     By default, this is (naturally) performed for objects containing the special meta key
     `__type__` with value of `confcls.Object`.
-    However, if `Configurable.from_file` `auto_obj` parameter is set to `True`,
+    However, if `Configurable.from_config` `auto_obj` parameter is set to `True`,
     this will be done for all JSON objects (unless they specify otherwise in
     the `__type__` meta key).
 
@@ -37,7 +37,7 @@ class Configurable:
         """
 
     @classmethod
-    def from_file(cls, json_file: str, auto_obj: bool = False):
+    def from_config(cls, json_file: str, auto_obj: bool = False):
         """
         Construct class instance based on JSON configuration
         :param json_file: Instance configuration

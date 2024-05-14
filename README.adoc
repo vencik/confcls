@@ -70,10 +70,10 @@ And instantiate the configured instance, thus:
 ----
 from my_module import MyClass
 
-my_obj = MyClass.from_file("my_obj.json")
+my_obj = MyClass.from_config("my_obj.json")
 ----
 
-(You may also call `confcls.Configurable.from_file` directly if you don't wish
+(You may also call `confcls.Configurable.from_config` directly if you don't wish
 to specify and/or import the type.)
 
 The instantiation does support nesting; your constructor arguments may indeed be other
@@ -186,7 +186,7 @@ So now, you can access your configuration e.g. like this:
 ----
 from confcls import Configuration  # Configurable extension of confcls.Object
 
-config = Configuration.from_file("my_config.json")
+config = Configuration.from_config("my_config.json")
 assert config.myarg2.absolutely == "anything"
 ----
 
@@ -194,7 +194,7 @@ Note that this sort of configuration doesn't support defaults as there's nowhere
 to define them (if you want defaults, just declare your (data)classes with them).
 Also note that you may combine the declared/free-form approaches (if it makes sense).
 
-Finally, observe that the `Configurable.from_file` member function has `auto_obj`
+Finally, observe that the `Configurable.from_config` member function has `auto_obj`
 parameter (with `False` default).
 Setting that parameter to `True` allows you to omit the `__type__` specification
 in your configuration.

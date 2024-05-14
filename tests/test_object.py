@@ -16,7 +16,7 @@ def test_configuration(tmpdir):
             },
         }, config)
 
-    my_obj = Configuration.from_file(json_file)
+    my_obj = Configuration.from_config(json_file)
     assert isinstance(my_obj, Configuration)
     assert isinstance(my_obj, Object)
 
@@ -43,7 +43,7 @@ def test_auto_obj(tmpdir):
             }],
         }, config)
 
-    my_obj = Configuration.from_file(json_file, auto_obj=True)
+    my_obj = Configuration.from_config(json_file, auto_obj=True)
     assert isinstance(my_obj, Configuration)
 
     assert isinstance(my_obj.foo, Object)

@@ -56,11 +56,11 @@ def test_class_instantiation(tmpdir):
         },
     )
 
-    my_obj = MyClass.from_file(json_file)
+    my_obj = MyClass.from_config(json_file)
     assert isinstance(my_obj, MyClass)
     assert my_obj == expect_obj
 
-    my_obj = Configurable.from_file(json_file)
+    my_obj = Configurable.from_config(json_file)
     assert isinstance(my_obj, MyClass)
     assert my_obj == expect_obj
 
@@ -86,7 +86,7 @@ def test_nesting(tmpdir):
             },
         }, config)
 
-    assert Configurable.from_file(json_file) == Class1(
+    assert Configurable.from_config(json_file) == Class1(
         foo=123,
         bar=Class2(arg1=345, arg2="whatever"),
         baz=Class3(arg=Class2(arg1=567, arg2="something else")),

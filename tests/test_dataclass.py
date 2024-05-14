@@ -35,7 +35,7 @@ def test_dataclass(tmpdir):
             "number" : 123,
         }, config)
 
-    assert Configurable.from_file(json_file) == Configuration(
+    assert Configurable.from_config(json_file) == Configuration(
         number=123,
         item1=Item1(foo=345, bar=0.5),
     )
