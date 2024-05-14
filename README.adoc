@@ -169,7 +169,7 @@ Just let `confcls` create the types for you, on demand:
 ----
 {
     "__type__" : "confcls.Configuration",
-    "myarg1" : "whatever you like',
+    "myarg1" : "whatever you like",
     "myarg2" : {
         "__type__" : "confcls.Object",
         "absolutely" : "anything",
@@ -182,7 +182,7 @@ Just let `confcls` create the types for you, on demand:
 arguments (and the instance contains them as members).
 So now, you can access your configuration e.g. like this:
 
-[source.python]
+[source,python]
 ----
 from confcls import Configuration  # Configurable extension of confcls.Object
 
