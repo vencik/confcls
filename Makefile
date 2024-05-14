@@ -25,6 +25,7 @@ mypy:
 check: test mypy lint
 
 build:
+	rm -rf dist
 	poetry build
 	asciidoctor -b docbook -a leveloffset=+1 -o - README.adoc | pandoc  --atx-headers --wrap=preserve -t markdown_strict -f docbook - > README.md
 
