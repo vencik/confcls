@@ -53,7 +53,7 @@ You can now store its instance configuration in a JSON file:
 [source,json]
 ----
 {
-    "__type__" : "my_module.MyClass",
+    "__type__" : "my_module::MyClass",
     "arg1" : "Hello world!",
     "arg2" : 123,
     "arg3" : ["abc", "ghi"],
@@ -76,6 +76,11 @@ my_obj = MyClass.from_config("my_obj.json")
 (You may also call `confcls.Configurable.from_config` directly if you don't wish
 to specify and/or import the type.)
 
+NOTE: In `confcls` v2, the common plain dot notation of `__type__` values changed
+to the following: `my.module.path::My.Class.Path`; that is to say, class specification
+are separated from module specification by `::`.
+This is necessary to support nested classes.
+
 The instantiation does support nesting; your constructor arguments may indeed be other
 class instances:
 
@@ -83,17 +88,17 @@ class instances:
 [source,json]
 ----
 {
-    "__type__" : "my_module.Class1",
+    "__type__" : "my_module::Class1",
     "foo" : 123,
     "bar" : {
-        "__type__" : "my_module.Class2",
+        "__type__" : "my_module::Class2",
         "arg1" : 345,
         "arg2" : "whatever"
     },
     "baz" : {
-        "__type__" : "my_module.Class3",
+        "__type__" : "my_module::Class3",
         "arg" : {
-            "__type__" : "my_module.Class2",
+            "__type__" : "my_module::Class2",
             "arg1" : 567,
             "arg2" : "something else"
         }
@@ -147,10 +152,10 @@ Now, your configuration may look like this:
 [source,json]
 ----
 {
-    "__type__" : "my_config.Configuration",
+    "__type__" : "my_config::Configuration",
     "number" : 123,
     "item1" : {
-        "__type__" : "my_config.Item1",
+        "__type__" : "my_config::Item1",
         "foo" : 345,
         "bar" : 0.5
     }
@@ -168,10 +173,10 @@ Just let `confcls` create the types for you, on demand:
 [source,json]
 ----
 {
-    "__type__" : "confcls.Configuration",
+    "__type__" : "confcls::Configuration",
     "myarg1" : "whatever you like",
     "myarg2" : {
-        "__type__" : "confcls.Object",
+        "__type__" : "confcls::Object",
         "absolutely" : "anything",
         "really" : 123
     }

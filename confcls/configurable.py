@@ -16,11 +16,14 @@ class Configurable:
 
     JSON objects containing special meta key `__type__` shall be treated as keyword
     parameters for constructor of the class specified in that key.
-    The class specification must be fully qualified, in dot notation.
+    The class specification must be fully qualified, in the following notation:
+    `my.module.path::My.Class.Path`
+    I.e. module dot-notation specification is separated from class hierarchy dot-notation
+    specification by `::`.
 
     The configuration deserialiser allows for automatic JSON object to config. object
     conversion.
-    Configuration object is a free-form objects containing the very same members
+    Configuration object is a free-form object containing the very same members
     as the JSON object contains (accessible via the standard dot syntax).
     By default, this is (naturally) performed for objects containing the special meta key
     `__type__` with value of `confcls.Object`.
@@ -49,8 +52,12 @@ class Configurable:
             if not meta_type:  # type not specified
                 return Object(**obj) if auto_obj else obj
 
-            module, cls = meta_type.rsplit('.', 1)
-            return getattr(import_module(module), cls)(**obj)
+            module_spec, class_path = meta_type.rsplit("::", 1)
+            cls = import_module(module_spec)
+            for class_spec in class_path.split('.'):
+                cls = getattr(cls, class_spec)
+
+            return cls(**obj)  # type: ignore
 
         with open(json_file, "r", encoding="utf-8") as json_fd:
             obj = load(json_fd, object_hook=obj_hook)

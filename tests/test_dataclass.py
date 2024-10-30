@@ -26,9 +26,9 @@ def test_dataclass(tmpdir):
     json_file = f"{tmpdir}/my_obj.json"
     with open(json_file, "w", encoding="utf-8") as config:
         json.dump({
-            "__type__" : "tests.test_dataclass.Configuration",
+            "__type__" : "tests.test_dataclass::Configuration",
             "item1" : {
-                "__type__" : "tests.test_dataclass.Item1",
+                "__type__" : "tests.test_dataclass::Item1",
                 "foo" : 345,
                 "bar" : 0.5,
             },

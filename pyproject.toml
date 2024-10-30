@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "confcls"
-version = "1.0.0"
+version = "2.0.0"
 description = "Class instance configurator"
 authors = [
     "Václav Krpec <vencik@razdva.cz>",
