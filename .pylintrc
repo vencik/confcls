@@ -65,6 +65,7 @@ disable=
     R0903,  # too few public methods; that's nonsense, interfaces commonly only have a few
     W0622,  # redefined builtin; that's the whole point of sys.exit or smart_open.open...
     R0902,  # too many members; especially in dataclasses, this is plainly ridiculous
+    R0912,  # too many branches; some functions are simply a bit complex, deal with it
 #        print-statement,
 #        logging-fstring-interpolation
       # ;   parameter-unpacking,

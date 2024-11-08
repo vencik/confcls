@@ -23,6 +23,8 @@ have to declare them).
 
 Support for remote config. is provided by (optional) use of `smart-open`.
 
+The library also provides dot-path syntax access to configuration object hierarchy.
+
 
 toc::[]
 
@@ -205,6 +207,34 @@ Setting that parameter to `True` allows you to omit the `__type__` specification
 in your configuration.
 In that case, the library will automatically treat all JSON objects in the config.
 file as if the `confcls.Object` type was specified.
+
+
+Dot-path Syntax Access
+~~~~~~~~~~~~~~~~~~~~~~
+
+`confcls.DotPath` allows `config["dot.path.to.attr"]` style access to configuration
+objects hierarchy.
+Each node on the (dot-separated) path represents object specification; be it by:
+* Attribute name
+* `dict` key
+* `list`, `tuple` or `string` index or slice
+* Regular expression matching attribute name or dict key
+
+It is enough to derive the top-level config. object from `DotPath.Accessible`
+and the following will be possible (note that `confcls.Configuration` is of course
+derived from `DotPath.Accessible`):
+
+[source,python]
+----
+my_val = config["foo.bar.baz"]              # same as config.foo.bar.baz
+my_val = config["items.3.foo"]              # same as config.items[3].foo
+my_val = config.get("foo.bar")              # on key miss, None is returned
+my_val = config.get("foo.bar", 123)         # on key miss, the default is returned
+my_val = config.items("foo.bar.*")          # iterator of all config.foo.bar attributes
+my_val = config.items("foo.r'ba.*'.2:-2")   # config.foo.(all matching attrs).slice(2,-2)
+----
+
+... and so on...
 
 
 Development
