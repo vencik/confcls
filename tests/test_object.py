@@ -31,7 +31,6 @@ def test_auto_obj(tmpdir):
     json_file = f"{tmpdir}/my_obj.json"
     with open(json_file, "w", encoding="utf-8") as config:
         json.dump({
-            "__type__" : "confcls::Configuration",
             "foo" : {
                 "bar" : 123,
             },
@@ -44,7 +43,7 @@ def test_auto_obj(tmpdir):
         }, config)
 
     my_obj = Configuration.from_config(json_file, auto_obj=True)
-    assert isinstance(my_obj, Configuration)
+    assert isinstance(my_obj, Object)
 
     assert isinstance(my_obj.foo, Object)
     assert my_obj.foo.bar == 123

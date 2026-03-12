@@ -62,7 +62,8 @@ class Configurable:
         with open(json_file, "r", encoding="utf-8") as json_fd:
             obj = load(json_fd, object_hook=obj_hook)
 
-            if not isinstance(obj, cls):  # wrong object configuration
+            # Wrong object configuration
+            if not (isinstance(obj, cls) or (auto_obj and isinstance(obj, Object))):
                 raise Configurable.ConfigError(
                     f"Load error: {json_file} doesn't configure instance of "
                     f"{cls.__module__}.{cls.__qualname__}")
